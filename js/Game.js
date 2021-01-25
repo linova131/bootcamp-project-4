@@ -21,19 +21,66 @@
     }
     
     startGame() {
-        let overlay = document.getElementById('overlay');
+        //reset board
+        while(phraseUL.lastChild) {
+            phraseUL.removeChild(phraseUL.lastChild);
+        }
+       for(let i=0; i<qwerty.length; i++) {
+           qwerty[i].className = 'key';
+       };
+       for(let i=0; i<5;i++){
+            const heartImg = heartsList.children[i].firstElementChild;
+            heartImg.src = 'images/liveHeart.png'
+       };
+       this.missed = 0;
+
+        //set board
         overlay.style.display = 'none';
-        
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     }
 
     handleInteraction(button) {
-        //console.log(this.activePhrase);
-        console.log(button.textContent);
-        console.log(this.activePhrase);
-        //checkLetter()
-        //showMatchedLetter()
+        const isPresent = this.activePhrase.checkLetter(button);
+        if(isPresent === true){
+            button.className = 'chosen';
+            this.activePhrase.showMatchedLetter(button);
+            this.checkForWin();
+        } else {
+            button.className = 'wrong';
+            this.removeLife();
+          };
+    }
+
+    removeLife() {
+        this.missed += 1;
+        const heartNum = this.missed - 1;
+        const heartImg = heartsList.children[heartNum].firstElementChild;
+        heartImg.src = 'images/lostHeart.png'
+      
+        if (this.missed === 5) {
+            console.log('ya burnt')
+            this.gameOver('loss');
+        };
+    }
+
+    checkForWin() {
+        const hiddenLetters = document.getElementsByClassName('hide');
+        if(hiddenLetters.length === 0) {
+            this.gameOver('win');
+        };
+    }
+
+    gameOver(outcome) {  
+        overlay.style.display = 'block';
+        
+        if(outcome === 'loss') {
+            overlay.className = 'lose';
+            gameOverMessage.textContent = 'Sorry, you lost!';
+        } else if (outcome === 'win') {
+            overlay.className = 'win';
+            gameOverMessage.textContent = 'YOU WON';
+        };
     }
 
  }
