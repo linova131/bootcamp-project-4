@@ -27,6 +27,7 @@
         }
        for(let i=0; i<qwerty.length; i++) {
            qwerty[i].className = 'key';
+           qwerty[i].disabled = false;
        };
        for(let i=0; i<5;i++){
             const heartImg = heartsList.children[i].firstElementChild;
@@ -42,14 +43,20 @@
 
     handleInteraction(button) {
         const isPresent = this.activePhrase.checkLetter(button);
-        if(isPresent === true){
+
+        if(isPresent === true && button.disabled === false){
             button.className = 'chosen';
             this.activePhrase.showMatchedLetter(button);
-            this.checkForWin();
-        } else {
+            const winCheck = this.checkForWin();
+            if(winCheck){
+                this.gameOver('win');
+            };
+        } else if (isPresent === false && button.disabled === false) {
             button.className = 'wrong';
             this.removeLife();
           };
+        
+        button.disabled = true;
     }
 
     removeLife() {
@@ -65,9 +72,11 @@
 
     checkForWin() {
         const hiddenLetters = document.getElementsByClassName('hide');
+        let didWin = false;
         if(hiddenLetters.length === 0) {
-            this.gameOver('win');
+            didWin = true;
         };
+        return didWin;
     }
 
     gameOver(outcome) {  

@@ -12,6 +12,7 @@ const heartsList = document.querySelector('ol');
 const newGame = new Game();
 
 startButton.addEventListener('click', ()=>{
+    //const newGame = new Game();
     newGame.startGame();
  
  });
