@@ -6,11 +6,11 @@
  const qwertyDiv = document.getElementById('qwerty');
  const qwerty = document.getElementsByClassName('key');
  const newGame = new Game();
- console.log(newGame.activePhrase);
 
 startButton.addEventListener('click', ()=>{
     const newGame = new Game();
     newGame.startGame();
+    console.log(newGame.activePhrase);
  });
 
 qwertyDiv.addEventListener('click', (e) => {

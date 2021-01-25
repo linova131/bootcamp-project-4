@@ -22,7 +22,7 @@
          }
      }
 
-     checkLetter() {
+     checkLetter(letter) {
          
      }
 
