@@ -5,6 +5,8 @@
  const startButton = document.getElementById('btn__reset');
  const qwertyDiv = document.getElementById('qwerty');
  const qwerty = document.getElementsByClassName('key');
+ const newGame = new Game();
+ console.log(newGame.activePhrase);
 
 startButton.addEventListener('click', ()=>{
     const newGame = new Game();
@@ -13,7 +15,7 @@ startButton.addEventListener('click', ()=>{
 
 qwertyDiv.addEventListener('click', (e) => {
     if(e.target.nodeName === 'BUTTON') {
-       //newGame.handleinteraction();
+       newGame.handleInteraction(e.target);
     };
 });
 

@@ -5,7 +5,7 @@
  class Game{
     constructor() {
         this.missed = 0
-        this.phrases = ['Hello World','Shaken not stirred','infinity and beyond','Cat Lady', 'plant mom'];
+        this.phrases = ['Hello World','Shaken not stirred','infinity and beyond','Greased Lightning', 'Go for broke'];
         this.activePhrase = null;
     }
 
@@ -23,8 +23,8 @@
         return this.phrases[phraseNum];
     }
 
-    handleInteraction() {
-        console.log('oh hey an interaction happened');
+    handleInteraction(button) {
+        
     }
 
  }
