@@ -13,18 +13,25 @@ const newGame = new Game();
 
 startButton.addEventListener('click', ()=>{
     newGame.startGame();
-    console.log(newGame.activePhrase);
  
  });
 
 qwertyDiv.addEventListener('click', (e) => {
     if(e.target.nodeName === 'BUTTON') {
        newGame.handleInteraction(e.target);
-       console.log(e.target);
     };
 });
 
 document.addEventListener('keyup', (e) => {
-    console.log(e.key);
+    let matchedKey = '';
     
+    for(let i=0;i<qwerty.length;i++){
+        if(qwerty[i].textContent === e.key){
+            matchedKey = qwerty[i];
+        };
+    };
+
+    if(matchedKey !== ''){
+        newGame.handleInteraction(matchedKey);
+    };
 });

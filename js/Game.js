@@ -59,7 +59,6 @@
         heartImg.src = 'images/lostHeart.png'
       
         if (this.missed === 5) {
-            console.log('ya burnt')
             this.gameOver('loss');
         };
     }
