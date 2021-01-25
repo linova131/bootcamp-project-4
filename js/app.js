@@ -11,6 +11,7 @@ startButton.addEventListener('click', ()=>{
     const newGame = new Game();
     newGame.startGame();
     console.log(newGame.activePhrase);
+ 
  });
 
 qwertyDiv.addEventListener('click', (e) => {

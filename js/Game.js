@@ -3,13 +3,15 @@
  * Game.js */
 
  class Game{
-     missed = 0;
-     phrases = [];
-    activePhrase = null;
-
+ 
     constructor() {
         this.missed = 0;
-        this.phrases = ['Hello World','Shaken not stirred','infinity and beyond','Greased Lightning', 'Go for broke'];
+        this.phrases = [
+            new Phrase('Hello World'),
+            new Phrase('Shaken not stirred'),
+            new Phrase('infinity and beyond'),
+            new Phrase('Greased Lightning'),
+            new Phrase('Go for broke')];
         this.activePhrase = null;
     }
 
@@ -23,8 +25,7 @@
         overlay.style.display = 'none';
         
         this.activePhrase = this.getRandomPhrase();
-        const firstPhrase = new Phrase(this.activePhrase);
-        firstPhrase.addPhraseToDisplay();
+        this.activePhrase.addPhraseToDisplay();
     }
 
     handleInteraction(button) {
