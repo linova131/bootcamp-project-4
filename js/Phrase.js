@@ -7,6 +7,7 @@
         this.phrase = phrase.toLowerCase();
      }
 
+     //addPhraseToDisplay() generates the letter blocks used for gameplay, depending on chosen phrase
      addPhraseToDisplay() {
         let phraseList = document.getElementById('phrase').firstElementChild;
 
@@ -23,6 +24,8 @@
          }
      }
 
+     //checkLetter() is a helper function that examines a letter passed as a parameter to see if it
+     // is present in the hidden phrase
      checkLetter(letter) {
          if(this.phrase.includes(letter.textContent)) {
             return true;
@@ -31,6 +34,8 @@
          }
      }
 
+     //showMatchedLetter() is a helper function that changes the class of relevant letter boxes to
+     //reveal the hidden letter, as the player correctly selects them
      showMatchedLetter(letter) {
          const char = letter.textContent;
          const matchBoxes = document.getElementsByClassName(char);

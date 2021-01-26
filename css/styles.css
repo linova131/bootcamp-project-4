@@ -4,16 +4,16 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
-  --color-start: #813066;
-  --color-neutral: #813066;
+  --color-win: #4ecdc4;
+  --color-lose: #ff6b6b;
+  --color-start: #4ecdc4;
+  --color-neutral: #3b3b3b;
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .9s ease-in-out;
 }
 
 /* main */
@@ -86,7 +86,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #1a535c;
 }
 
 
@@ -110,8 +110,8 @@ button {
 
 
 .show {
-  color: #fff;
-  background-color: #4ac0d5;
+  color: #11363b;
+  background-color: #4ecdc4;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,15 +131,15 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #ffe66d;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #11363b;
 }
 
 .wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+  background: #FF6B6B;
+  color: #11363b;
 }
 
 .btn__reset {
@@ -166,7 +166,7 @@ button {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #FFFFFF;
+  color: #11363b;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -176,11 +176,11 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: #11363b;
 }
 
 .start {
-  background-color: #a33c56;
+  background-color: #4ecdc4;
 }
 
 .start a {
@@ -196,7 +196,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #FF6B6B;
 }
 
 .lose a {

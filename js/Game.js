@@ -7,19 +7,23 @@
     constructor() {
         this.missed = 0;
         this.phrases = [
-            new Phrase('Hello World'),
+            new Phrase('hold your horses'),
             new Phrase('Shaken not stirred'),
-            new Phrase('infinity and beyond'),
-            new Phrase('Greased Lightning'),
-            new Phrase('Go for broke')];
+            new Phrase('To Infinity and Beyond'),
+            new Phrase('Close but no cigar'),
+            new Phrase('Go for broke'),
+            new Phrase('walking on sunshine'),
+            new Phrase('curiosity Killed the Cat')];
         this.activePhrase = null;
     }
-
+    
+    //getRandomPhrase() chooses a random phrase object from the preset array greated with the game object
     getRandomPhrase() {
         let phraseNum = Math.floor(Math.random()*this.phrases.length);
         return this.phrases[phraseNum];
     }
     
+    //startGame() creates the game board, refills the hearts, and generates the empty boxes for gameplay
     startGame() {
         //reset board
         while(phraseUL.lastChild) {
@@ -41,6 +45,8 @@
         this.activePhrase.addPhraseToDisplay();
     }
 
+    //handleInteraction() accepts a keystroke or click and determines calls helper functions to determine
+    //what game actions need to occur vis a vis right/wrong letter choices
     handleInteraction(button) {
         const isPresent = this.activePhrase.checkLetter(button);
 
@@ -58,7 +64,8 @@
         
         button.disabled = true;
     }
-
+    
+    //removeLife() is a helper function that handles accelerating the missed property and replaces heart images
     removeLife() {
         this.missed += 1;
         const heartNum = this.missed - 1;
@@ -70,6 +77,8 @@
         };
     }
 
+    //checkForWin() is a helper function that examines the revealed letters to determine if the player has won.
+    //Returns a Boolean
     checkForWin() {
         const hiddenLetters = document.getElementsByClassName('hide');
         let didWin = false;
@@ -78,16 +87,25 @@
         };
         return didWin;
     }
-
+    
+    //gameOver() is a helper function that generates endgame behaviors and different endgame messages.
     gameOver(outcome) {  
         overlay.style.display = 'block';
         
         if(outcome === 'loss') {
             overlay.className = 'lose';
-            gameOverMessage.textContent = 'Sorry, you lost!';
+            if(playerName !== ''){
+                gameOverMessage.textContent = `Sorry, ${playerName}, you lost!`;
+            } else {
+                gameOverMessage.textContent = 'Sorry! You lost.'
+            };
         } else if (outcome === 'win') {
             overlay.className = 'win';
-            gameOverMessage.textContent = 'YOU WON';
+            if(playerName !== ''){
+                gameOverMessage.textContent = `YOU WON, ${playerName.toUpperCase()}`;
+            } else {
+                gameOverMessage.textContent = 'YOU WON!!!!';
+            } ;
         };
     }
 
